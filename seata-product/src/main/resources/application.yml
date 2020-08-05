@@ -1,0 +1,37 @@
+server:
+  port: 12347
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.10.11.15:8848
+        namespace: ff2a1399-d3a6-48f5-80a9-18d67b35e383
+  datasource:
+    url: jdbc:mysql://10.10.11.15:3306/seata_storage?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      max-active: 200
+      max-wait: 30000
+      initial-size: 5
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      time-between-connect-error-millis: 60000
+      min-evictable-idle-time-millis: 300000
+  application:
+    name: seata-product
+seata:
+  application-id: ${spring.application.name}
+  tx-service-group: ${spring.application.name}-group
+  registry:
+    nacos:
+      namespace: ff2a1399-d3a6-48f5-80a9-18d67b35e383
+      server-addr: 10.10.11.15:8848
+    type: nacos
+  service:
+    vgroup-mapping:
+      seata-product-group: default

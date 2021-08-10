@@ -4,10 +4,10 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 10.10.11.15:8848
-        namespace: ff2a1399-d3a6-48f5-80a9-18d67b35e383
+        server-addr: 10.10.8.2:8848
+        namespace: cd1456fd-6a7f-4dc6-bf02-84ea03c8958f
   datasource:
-    url: jdbc:mysql://10.10.11.15:3306/seata_order?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/seata_order?characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -29,8 +29,8 @@ seata:
   tx-service-group: ${spring.application.name}-group
   registry:
     nacos:
-      namespace: ff2a1399-d3a6-48f5-80a9-18d67b35e383
-      server-addr: 10.10.11.15:8848
+      server-addr: 10.10.8.2:8848
+      namespace: cd1456fd-6a7f-4dc6-bf02-84ea03c8958f
     type: nacos
   service:
     vgroup-mapping:

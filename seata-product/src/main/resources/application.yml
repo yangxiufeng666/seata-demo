@@ -4,7 +4,8 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 10.10.8.2:8848
+        namespace: cd1456fd-6a7f-4dc6-bf02-84ea03c8958f
   datasource:
     url: jdbc:mysql://localhost:3306/seata_storage?characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: root
@@ -30,7 +31,13 @@ seata:
     nacos:
       server-addr: 10.10.8.2:8848
       namespace: cd1456fd-6a7f-4dc6-bf02-84ea03c8958f
+      group: SEATA_GROUP
     type: nacos
+  config:
+    nacos:
+      server-addr: 10.10.8.2:8848
+      namespace: cd1456fd-6a7f-4dc6-bf02-84ea03c8958f
+      group: SEATA_GROUP
   service:
     vgroup-mapping:
       seata-product-group: default

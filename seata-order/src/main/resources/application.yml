@@ -32,6 +32,14 @@ seata:
       server-addr: 10.10.8.2:8848
       namespace: cd1456fd-6a7f-4dc6-bf02-84ea03c8958f
     type: nacos
+  config:
+    nacos:
+      server-addr: 10.10.8.2:8848
+      namespace: cd1456fd-6a7f-4dc6-bf02-84ea03c8958f
+      group: SEATA_GROUP
   service:
     vgroup-mapping:
       seata-order-group: default
+feign:
+  sentinel:
+    enabled: true

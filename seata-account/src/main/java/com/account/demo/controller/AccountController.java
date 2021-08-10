@@ -2,6 +2,7 @@ package com.account.demo.controller;
 
 import com.account.demo.dto.AccountReduceBalanceDTO;
 import com.account.demo.service.AccountService;
+import com.dsy.sunshine.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,11 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping("/reduce-balance")
-    public void reduceBalance(@RequestBody AccountReduceBalanceDTO accountReduceBalanceDTO) throws Exception {
+    public Response<Void> reduceBalance(@RequestBody AccountReduceBalanceDTO accountReduceBalanceDTO) throws Exception {
         logger.info("[reduceBalance] 收到减少余额请求, 用户:{}, 金额:{}", accountReduceBalanceDTO.getUserId(),
                 accountReduceBalanceDTO.getPrice());
         accountService.reduceBalance(accountReduceBalanceDTO.getUserId(), accountReduceBalanceDTO.getPrice());
+        return Response.success();
     }
 
 }
